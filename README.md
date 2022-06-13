@@ -24,17 +24,19 @@ Needed .env variables are:
 ### Then, to run it with Docker
 Set up your docker environment. Install it if you don't have it yet installed.
 <br>
-After that you can run the app going inside the app you want to run and running:
+After that you can run the app going inside the app you want to run and running: <br>
 <code>
 docker-compose up
 </code>
-
-###
+<br>
 If you want to run it locally make sure you have yarn installed, you can install it with:
+<br>
 <code>
 npm install yarn
 </code>
+<br>
 Then, to make the app run you can run the following commands in your terminal inside the app you want to run:
+<br>
 <code>
 yarn
 # to run jobs-producer-api
@@ -44,5 +46,6 @@ yarn dev
 cd jobs-backend
 yarn dev
 </code>
+<br>
 ### Credits:
 By Mateus S. Leao 
