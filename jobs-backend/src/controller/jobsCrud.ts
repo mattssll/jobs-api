@@ -1,21 +1,21 @@
-import express, { Request, Response } from "express";
-import { authenticateToken } from '../utils/jwtAuth';
+import { Request, Response } from "express";
 import { collections } from "../database/database";
-import { JobPosition } from "../consume-api-service/models/domain";
+import { iJobPositionMongo } from "../models/domain";
 
 
 export const getJobs = async (req: Request, res: Response) => {
     try {
-        const jobs = (await collections.jobs!.find({}).toArray()) as unknown as JobPosition[];
+        const jobs = (await collections.jobs!.find({}).toArray()) as unknown as iJobPositionMongo[];
         res.status(200).send(jobs);
     } catch (error) {
         res.status(500).send(error);//.message);
     }
 }
 
-export const postJob = async (req: Request, res: Response) => {
+
+export const createJob = async (req: Request, res: Response) => {
     try {
-        const newJob = req.body as JobPosition;
+        const newJob = req.body as iJobPositionMongo;
         const result = await collections.jobs!.insertOne(newJob);
 
         result

@@ -1,16 +1,17 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Router } from "express";
 import { authenticateToken } from '../utils/jwtAuth';
-import { getJobs, postJob } from "./jobsCrud";
+import { getJobs, createJob } from "../controller/jobsCrud";
 
-export const jobsRouter = express.Router();
 
+export const jobsRouter: Router = express.Router();
 jobsRouter.use(express.json());
 
-// CRUD
+
+
 jobsRouter.get("/", /* authenticateToken,*/ async (req: Request, res: Response) => {
     getJobs(req, res);
 });
 
 jobsRouter.post("/", authenticateToken, async (req: Request, res: Response) => {
-    postJob(req, res);
+    createJob(req, res);
 });

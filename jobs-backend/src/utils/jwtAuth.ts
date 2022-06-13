@@ -3,6 +3,9 @@ const jwt = require('jsonwebtoken');
 const { config } = require('dotenv');
 config();
 
+
+export const port = process.env.PORT
+
 export function generateAccessToken(username: any) {
   return jwt.sign(username, process.env.TOKEN_SECRET);
 }
