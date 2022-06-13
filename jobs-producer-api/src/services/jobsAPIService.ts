@@ -43,7 +43,7 @@ const fetchAPISaveDB = async (baseUrl: string,
     try {
         const response = await limiter.schedule(() => axios.get<APIResponse>(`${finalUrl}`));
         nrOfPages = Math.floor((await response.data.count)/nrOfRecords);
-        const jobPositions : JobPosition[] = await parseJobPosition(response.data.results, jobPositionName);
+        const jobPositions : JobPosition[] = await parseJobPosition(response.data.results, jobPositionName, country);
         if (jobPositions.length != 0) {
             sendArrayToDB(jobPositions);
         }
@@ -52,7 +52,7 @@ const fetchAPISaveDB = async (baseUrl: string,
             for (let page = 2 ; page <= nrOfPages; page++) {
                 const finalUrl = buildFinalUrl(baseUrl, country, nrOfRecords, jobPositionName, page);
                 const response = await limiter.schedule(() => axios.get<APIResponse>(`${finalUrl}`));
-                const jobPositions : JobPosition[] = await parseJobPosition(response.data.results, jobPositionName);
+                const jobPositions : JobPosition[] = await parseJobPosition(response.data.results, jobPositionName, country);
                 if (jobPositions.length != 0) {
                     sendArrayToDB(jobPositions);
                 }

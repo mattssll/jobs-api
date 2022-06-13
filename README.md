@@ -39,6 +39,7 @@ Then, to make the app run you can run the following commands in your terminal in
 <br>
 <code>
 yarn
+
 # to run jobs-producer-api
 cd jobs-producer-api
 yarn dev

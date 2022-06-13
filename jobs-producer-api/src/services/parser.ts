@@ -1,17 +1,22 @@
-import { JobPosition } from '../models/domain';
+import { JobPosition, TLocation } from '../models/domain';
 
 
-export const parseJobPosition = (payload: [JobPosition | any], jobPositionName: string) : any => {
+export const parseJobPosition = (payload: [JobPosition | any], jobPositionName: string, country: string) : any => {
   //console.log(payload);  
   
     const myPositionsJsonArray = payload.map(item=>{
+        const location: TLocation = {
+          display_name: item.location.display_name,
+          country: country,
+          area: item.location.area
+        }
         const jobPosObj = new JobPosition(
           parseInt(item.id),
           item.redirect_url,
           jobPositionName,
           item.title,
           item.description,
-          item.location,
+          location,
           item.salary_min,
           item.salary_max,
           item.company.display_name,
