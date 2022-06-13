@@ -13,4 +13,4 @@ COPY . /app
 RUN yarn build
 
 EXPOSE 80
-CMD [ "yarn", "api" ]
+CMD [ "node", "/app/src/index.js" ]
