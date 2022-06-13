@@ -23,8 +23,8 @@ export interface iJobPositionMongo
 }
 
 export type TLocation = {
-    __CLASS__: string,
     display_name: string,
+    country: string,
     area: [string]
 };
 

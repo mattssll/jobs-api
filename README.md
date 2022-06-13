@@ -43,7 +43,7 @@ yarn
 # to run jobs-producer-api
 cd jobs-producer-api
 yarn dev
-# to run jobs-pbackend
+# to run jobs-backend
 cd jobs-backend
 yarn dev
 </code>

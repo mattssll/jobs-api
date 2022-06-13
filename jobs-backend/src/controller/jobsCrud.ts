@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { collections } from "../database/database";
-import { iJobPositionMongo } from "../models/domain";
+import { iJobPositionMongo, JobPosition } from "../models/domain";
 
 
 export const getJobs = async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ export const getJobs = async (req: Request, res: Response) => {
 
 export const createJob = async (req: Request, res: Response) => {
     try {
-        const newJob = req.body as iJobPositionMongo;
+        const newJob = req.body as JobPosition;
         const result = await collections.jobs!.insertOne(newJob);
 
         result

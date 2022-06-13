@@ -16,7 +16,7 @@ export const consumeApiService = async (searchTerms: string[], countries: string
    each country, for all of the 
    passed jobCategories          */
    countries.forEach(country => {
-      console.log(`starting to consume data from api to country - ${country}`)
+      console.log(`starting to consume data from api to country - ${country}, for all job positions`)
       searchTerms.map(jobCategory => fetchAPISaveDB(
         apiSettings.baseUrl, 
         country,
@@ -37,7 +37,6 @@ const fetchAPISaveDB = async (baseUrl: string,
                                     jobPositionName: string, 
                                     limiter: Bottleneck
                                     ) => {
-    console.log(`starting to scrape process for ${country} and ${jobPositionName}`)
     const finalUrl = buildFinalUrl(baseUrl, country, nrOfRecords, jobPositionName, 1);
     let nrOfPages = null;
     try {

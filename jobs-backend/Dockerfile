@@ -7,8 +7,6 @@ WORKDIR /app
 COPY package.json /app
 COPY yarn.lock /app
 
-USER node
-
 RUN yarn
 
 # Bundle app source
